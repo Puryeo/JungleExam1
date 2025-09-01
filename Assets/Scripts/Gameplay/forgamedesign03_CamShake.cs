@@ -22,7 +22,7 @@ public class forgamedesign03_CamShake : MonoBehaviour
     [SerializeField, Tooltip("X축 흔들림 세기")]
     private float xShakeIntensity = 2f;
     [SerializeField, Tooltip("Y축 흔들림 세기")]
-    private float yShakeIntensity = 2f;
+    private float yShakeIntensity = 0.5f; // 변경: 수직 흔들림 감소 (기존 2f -> 0.5f)
     [SerializeField, Tooltip("Z축 흔들림 세기")]
     private float zShakeIntensity = 1f;
     
@@ -37,7 +37,7 @@ public class forgamedesign03_CamShake : MonoBehaviour
     [Header("Direction Control")]
     [SerializeField, Tooltip("수평 성분 비율 (0 = 수평 없음, 1 = 그대로)")]
 
-    private float horizontalMultiplier = 0f; // 기본: 0 => 수평 제거, 아래로만 흔들림
+    private float horizontalMultiplier = 0.2f; // 변경: 기본 수평 성분 비율 완화 (기존 0f -> 0.2f)
     [SerializeField, Tooltip("수직 성분을 항상 아래로 강제 (true면 Y는 음수로 고정)")]
     private bool forceDownward = true;
     
@@ -95,7 +95,7 @@ public class forgamedesign03_CamShake : MonoBehaviour
             }
             
             // 하ard코딩된 기본값 강제 설정 (인스펙터 무시)
-            horizontalMultiplier = 0f; // 수평 성분 제거
+            horizontalMultiplier = 0.2f; // 변경 반영: 수평 성분을 일부 허용하여 수직 편향 완화
             forceDownward = true;      // 항상 아래로 흔들림
         }
         else if (instance != this)
